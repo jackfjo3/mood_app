@@ -1,0 +1,24 @@
+= simple_form_for @mood, html: { multipart: true } do |f|
+  - if @mood.errors.any?
+    #errors
+      %p
+        = @mood.errors.count
+        Prevented this recipe from saving.
+      %ul
+        - @mood.errors.full_messages.each do |msg|
+          %li = msg
+  .panel-body
+
+    = f.input :happiness,   input_html: { class: 'form-control'},
+    = f.input :energy,      input_html: { class: 'form-control'}
+    = f.input :motivation,  input_html: { class: 'form-control'}
+    = f.input :love,        input_html: { class: 'form-control'}
+    = f.input :smoke,       input_html: { class: 'form-control'}
+    = f.input :drink,       input_html: { class: 'form-control'}
+    = f.input :awake,       input_html: { class: 'form-control'}
+    = f.input :notes,       input_html: { class: 'form-control'}
+    = f.input :special,     input_html: { class: 'form-control'}
+    = render 'slider'
+
+    = f.button :submit, class: "btn btn-primary"
+

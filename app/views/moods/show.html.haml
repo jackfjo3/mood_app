@@ -1,0 +1,40 @@
+%h1= @mood.created_at
+
+%p
+  =@mood.notes
+
+%p
+  Happiness: 
+  =@mood.happiness
+%p
+  Motivation: 
+  =@mood.motivation
+%p
+  Energy: 
+  =@mood.energy
+%p
+  Love: 
+  =@mood.love
+%p
+  Smoked?: 
+  - if @mood.smoke
+    yes
+  - else
+    no
+  
+%p
+  Drink?: 
+  - if @mood.drink
+    yes
+  - else
+    no
+%p
+  Awake?: 
+  - if @mood.awake
+    yes
+  - else
+    no
+
+= link_to "Back", moods_path
+= link_to "Edit", edit_mood_path
+

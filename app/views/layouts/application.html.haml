@@ -8,10 +8,22 @@
     = csrf_meta_tags
   %body
 
-      %p 
-        .notice
-          = notice
-      %p
-        .alert
-          = alert
+    %nav.navbar.navbar-default
+      .container
+        .navbar-brand= link_to "Moods", root_path
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li= link_to "New Mood", new_mood_path
+            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+          - else 
+            %li= link_to "Join Us", new_user_registration_path
+            %li= link_to "Sign In", new_user_session_path
+          
+
+    %p 
+      .notice
+        = notice
+    %p
+      .alert
+        = alert
     = yield

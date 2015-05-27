@@ -1,0 +1,10 @@
+%h1 
+  Moods for 
+  = current_user.email
+
+%ul
+  - @moods.each do |mood|
+    %li
+      = link_to mood.created_at, mood
+
+  

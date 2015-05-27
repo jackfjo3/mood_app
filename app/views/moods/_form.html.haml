@@ -1,0 +1,21 @@
+= simple_form_for @mood, html: { multipart: true } do |f|
+  - if @mood.errors.any?
+    #errors
+      %p
+        = @mood.errors.count
+        Prevented this recipe from saving.
+      %ul
+        - @mood.errors.full_messages.each do |msg|
+          %li = msg
+  .panel-body
+  
+    = render 'sliders'
+
+    = f.input :smoke,       input_html: { class: 'form-control'}
+    = f.input :drink,       input_html: { class: 'form-control'}
+    = f.input :awake,       input_html: { class: 'form-control'}
+    = f.input :notes,       input_html: { class: 'form-control'}
+    = f.input :special,     input_html: { class: 'form-control'}
+
+    = f.button :submit, class: "btn btn-primary"
+
