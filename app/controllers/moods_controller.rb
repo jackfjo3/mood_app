@@ -7,13 +7,39 @@ class MoodsController < ApplicationController
     @moods = current_user.moods.all.order("created_at DESC")
     # array of mood data. logic should probably not be here
     @moods.each do |mood|
+      happiness   = mood.happiness
+      energy      = mood.energy
+      motivation  = mood.motivation
+      love        = mood.love
+
+      time = mood.created_at.to_i
+      mood_time ||= [time, happiness]
+      
+      @data_happiness ||= []
+      @data_happiness.push(mood_time)
+
+      @data_energy ||= []
+      @data_energy.push(mood_time)
+
+      @data_motivation ||= []
+      @data_motivation.push(mood_time)
+
+      @data_love ||= []
+      @data_love.push(mood_time)
+
+
+    end
+
+
+=begin
       @happiness ||= []
       @happiness.push(mood.happiness)
       @times ||= []
-      @times.push(mood.created_at)
+      @times.push(mood.created_at.utc)
     end
+=end
 
-    @array = [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+   
   end
 
   def show
