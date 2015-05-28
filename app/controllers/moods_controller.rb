@@ -3,7 +3,17 @@ class MoodsController < ApplicationController
   before_action :correct_user, only: [:show, :update, :destroy]
 
   def index
+    
     @moods = current_user.moods.all.order("created_at DESC")
+    # array of mood data. logic should probably not be here
+    @moods.each do |mood|
+      @happiness ||= []
+      @happiness.push(mood.happiness)
+      @times ||= []
+      @times.push(mood.created_at)
+    end
+
+    @array = [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
   end
 
   def show

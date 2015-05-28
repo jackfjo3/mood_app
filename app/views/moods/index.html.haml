@@ -2,6 +2,20 @@
   Moods for 
   = current_user.email
 
+= render 'chart'
+
+%h3
+  Happiness
+  = @happiness
+  Times
+  = @times
+
+
+
+
+  /= line_chart User.group_by_day(:created_at).count
+
+
 %ul
   - @moods.each do |mood|
     %li
