@@ -5,27 +5,33 @@ class MoodsController < ApplicationController
   def index
     
     @moods = current_user.moods.all.order("created_at DESC")
-    # array of mood data. logic should probably not be here
+    # array of mood data. dry this up. logic should probably not be here
     @moods.each do |mood|
+      time        = mood.created_at.to_i*1000
       happiness   = mood.happiness
       energy      = mood.energy
       motivation  = mood.motivation
       love        = mood.love
-
-      time = mood.created_at.to_i
-      mood_time ||= [time, happiness]
       
+      datum_happiness ||= []
+      datum_happiness = [time,happiness]
       @data_happiness ||= []
-      @data_happiness.push(mood_time)
+      @data_happiness.push(datum_happiness)
 
+      datum_energy ||= []
+      datum_energy = [time,energy]
       @data_energy ||= []
-      @data_energy.push(mood_time)
+      @data_energy.push(datum_energy)
 
+      datum_motivation ||= []
+      datum_motivation = [time,motivation]
       @data_motivation ||= []
-      @data_motivation.push(mood_time)
+      @data_motivation.push(datum_motivation)
 
+      datum_love ||= []
+      datum_love = [time,love]
       @data_love ||= []
-      @data_love.push(mood_time)
+      @data_love.push(datum_love)
 
 
     end
@@ -53,7 +59,7 @@ class MoodsController < ApplicationController
   def create
     @mood = current_user.moods.build(mood_params)
     if @mood.save
-      redirect_to @mood
+      redirect_to root_path
     else
       render 'new'
     end
@@ -73,6 +79,9 @@ class MoodsController < ApplicationController
   end
 
   def destroy
+    @mood = Mood.find(params[:id])
+    @mood.destroy
+    redirect_to root_path
   end
 
   private
