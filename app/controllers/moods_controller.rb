@@ -1,6 +1,6 @@
 class MoodsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user, only: [:index, :show, :update, :destroy]
+#before_action :authenticate_user!
+ # before_action :correct_user, only: [:show, :update, :destroy]
 
   def all
     
@@ -37,17 +37,6 @@ class MoodsController < ApplicationController
 
 
     end
-
-
-=begin
-      @happiness ||= []
-      @happiness.push(mood.happiness)
-      @times ||= []
-      @times.push(mood.created_at.utc)
-    end
-=end
-
-   
   end
 
   def show
@@ -61,7 +50,7 @@ class MoodsController < ApplicationController
   def create
     @mood = current_user.moods.build(mood_params)
     if @mood.save
-      redirect_to root_path
+      redirect_to all_moods_path
     else
       render 'new'
     end

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  resources :moods
 
-  get   'moods/all'   =>    'moods#all'
+  resources :moods do
+    collection do
+      get :all
+    end
+  end
 
   root  'moods#new'
 
