@@ -14,7 +14,7 @@
   %body
     %nav.navbar.navbar-default
       .container
-        .navbar-brand= link_to "Moods", root_path
+        .navbar-brand= link_to "Moods", moods_all_path
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
             %li= link_to "New Mood", new_mood_path

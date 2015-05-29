@@ -1,11 +1,12 @@
 class MoodsController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:show, :update, :destroy]
+  before_action :correct_user, only: [:index, :show, :update, :destroy]
 
-  def index
+  def all
     
+
     @moods = current_user.moods.all.order("created_at DESC")
-    
+
     # array of mood data. dry this up. logic should probably not be here
     @moods.each do |mood|
       time        = mood.created_at.to_i*1000

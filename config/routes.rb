@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :moods
 
-  root 'moods#new'
+  get   'moods/all'   =>    'moods#all'
+
+  root  'moods#new'
 
 end
