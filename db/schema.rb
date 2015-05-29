@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526214810) do
+ActiveRecord::Schema.define(version: 20150529173717) do
 
   create_table "moods", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150526214810) do
     t.integer  "happiness"
     t.integer  "motivation"
     t.integer  "love"
-    t.boolean  "smoke"
-    t.boolean  "drink"
-    t.boolean  "awake"
+    t.boolean  "smoked"
+    t.boolean  "drank"
+    t.boolean  "in_bed"
     t.text     "notes"
     t.boolean  "special"
     t.datetime "created_at", null: false

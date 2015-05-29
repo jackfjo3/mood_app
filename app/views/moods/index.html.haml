@@ -3,6 +3,8 @@
 %ul
   - @moods.each do |mood|
     %li
-      = link_to mood.created_at, mood
+      %p
+      = mood.notes
+      = link_to mood.created_at.strftime('%A'', ' '%b' ' ' '%d'), mood
 
   

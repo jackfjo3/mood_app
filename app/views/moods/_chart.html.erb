@@ -3,6 +3,14 @@
 <script type="text/javascript">
   $(function () {
     $('#container').highcharts({
+
+        exporting: { enabled: false 
+        },
+
+          credits: {
+            enabled: false
+        },
+
         chart: {
             type: 'spline'
         },
@@ -10,7 +18,7 @@
             text: 'Your Moods'
         },
         subtitle: {
-            text: 'Irregular time data in Highcharts JS'
+            text: ''
         },
         xAxis: {
             type: 'datetime',
@@ -23,11 +31,19 @@
             }
         },
         yAxis: {
-            title: {
-                text: 'Remove this'
+
+            labels: {
+                enabled: false
             },
-            min: 0
-        },
+
+            title: {
+                text: ''
+            },
+            min: 0,
+            max: 1000,
+
+        }, 
+
         tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
             pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
@@ -40,6 +56,8 @@
                 }
             }
         },
+
+
 
         series: [
             {

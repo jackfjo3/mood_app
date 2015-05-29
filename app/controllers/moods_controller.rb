@@ -5,6 +5,7 @@ class MoodsController < ApplicationController
   def index
     
     @moods = current_user.moods.all.order("created_at DESC")
+    
     # array of mood data. dry this up. logic should probably not be here
     @moods.each do |mood|
       time        = mood.created_at.to_i*1000
