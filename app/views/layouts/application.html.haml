@@ -16,10 +16,10 @@
     .container
       .navbar-brand= link_to "Your Moods", all_moods_path
       %ul.nav.navbar-nav.navbar-right
-        - if user_signed_in? && !current_page?(new_mood_path)
+        - if current_page?(new_mood_path) || current_page?(root_path)
+        - elsif user_signed_in? && !current_page?(new_mood_path) && !current_page?(root_path)
           %li= link_to "New Mood", new_mood_path
           %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-        - elsif current_page?(new_mood_path)
         - else 
           %li= link_to "Join Us", new_user_registration_path
           %li= link_to "Sign In", new_user_session_path

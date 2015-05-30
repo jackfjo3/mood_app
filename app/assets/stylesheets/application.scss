@@ -1,11 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.checkbox label {
-  width: 100%;
-}
+@media(min-width: 480px) {
+  .checkbox label {
+    width: 100%;
+  }
 
-.boolean {
-  display: inline-block;
-  width: 20%;
+  .boolean {
+    display: inline-block;
+    width: 20%;
+  }
 }
