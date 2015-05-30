@@ -1,4 +1,4 @@
-!!!
+!!! 5
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
@@ -11,23 +11,21 @@
     / Likely more efficient way to implement JS with Rails
     = render 'layouts/script_links'
     
-  %body
-    %nav.navbar.navbar-default
-      .container
-        .navbar-brand= link_to "Moods", all_moods_path
-        %ul.nav.navbar-nav.navbar-right
-          - if user_signed_in?
-            %li= link_to "New Mood", new_mood_path
-            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-          - else 
-            %li= link_to "Join Us", new_user_registration_path
-            %li= link_to "Sign In", new_user_session_path
+%body
+  %nav.navbar.navbar-default
+    .container
+      .navbar-brand= link_to "Your Moods", all_moods_path
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in? && !current_page?(new_mood_path)
+          %li= link_to "New Mood", new_mood_path
+          %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+        - elsif current_page?(new_mood_path)
+        - else 
+          %li= link_to "Join Us", new_user_registration_path
+          %li= link_to "Sign In", new_user_session_path
           
 
-    %p 
-      .notice
-        = notice
-    %p
-      .alert
-        = alert
+  .container
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class: "alert"
     = yield

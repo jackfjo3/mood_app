@@ -1,6 +1,6 @@
 class MoodsController < ApplicationController
-#before_action :authenticate_user!
- # before_action :correct_user, only: [:show, :update, :destroy]
+before_action :authenticate_user!
+before_action :correct_user, only: [:show, :update, :destroy]
 
   def all
     

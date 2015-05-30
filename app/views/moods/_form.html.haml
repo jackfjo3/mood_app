@@ -7,15 +7,16 @@
       %ul
         - @mood.errors.full_messages.each do |msg|
           %li = msg
-  .panel-body
+
   
-    = render 'sliders'
+  = render 'sliders'
 
-    = f.input :smoked, input_html: { class: 'form-control'}
-    = f.input :drank, label: "Drinking", input_html: { class: 'form-control'}
-    = f.input :in_bed, input_html: { class: 'form-control'}
-    = f.input :notes, input_html: { class: 'form-control'}
-    = f.input :special, nput_html: { class: 'form-control'}
+  = f.input :smoked, label: "Smoking?",class: 'btn btn-default'
+  = f.input :drank, label: "Drinking", class: 'btn btn-default'
+  = f.input :in_bed, label: "In Bed?", class: 'btn btn-default'
+  = f.input :notes, input_html: { class: 'form-control'}
+  = f.input :special, class: 'btn btn-default'
 
-    = f.button :submit, class: "btn btn-primary"
+  %br
+  = f.button :submit, class: "btn btn-primary"
 
