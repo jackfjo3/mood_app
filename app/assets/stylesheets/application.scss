@@ -11,3 +11,15 @@
     width: 20%;
   }
 }
+
+@media only screen and (max-width : 767px) {
+
+  .navbar-right {
+    clear: both;
+  }
+
+  .navbar-nav {
+    margin: 7.5px 0px;
+}
+
+}
